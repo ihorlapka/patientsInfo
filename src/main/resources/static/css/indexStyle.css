@@ -1,0 +1,19 @@
+.btn-newPatient{
+    position: relative;
+    left: 250px;
+    top: 21px;
+}
+.icon{
+    position: relative;
+    left: 220px;
+    bottom: 5px;
+}
+
+.current-patient:hover{
+    background-color: cornflowerblue;
+}
+
+.comments{
+    position: relative;
+    left: 400px;
+}

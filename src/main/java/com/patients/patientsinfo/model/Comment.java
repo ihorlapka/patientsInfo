@@ -1,7 +1,7 @@
 package com.patients.patientsinfo.model;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.time.LocalDate;
 
 @Entity
 public class Comment {
@@ -9,7 +9,7 @@ public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Date postedDate;
+    private LocalDate postedDate;
     private String context;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -27,11 +27,11 @@ public class Comment {
         this.id = id;
     }
 
-    public Date getPostedDate() {
+    public LocalDate getPostedDate() {
         return postedDate;
     }
 
-    public void setPostedDate(Date postedDate) {
+    public void setPostedDate(LocalDate postedDate) {
         this.postedDate = postedDate;
     }
 

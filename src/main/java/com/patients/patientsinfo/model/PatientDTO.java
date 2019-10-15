@@ -1,11 +1,12 @@
 package com.patients.patientsinfo.model;
 
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.sql.Date;
-import java.util.List;
 
-@Entity
-public class Patient {
+public class PatientDTO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,23 +16,14 @@ public class Patient {
     private int age;
     @Basic
     private Date dateOfBirth;
-    private Sex sex;
+    private Patient.Sex sex;
     private String country;
     private String state;
     private String address;
     private String icon;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "patient")
-    private List<Comment> comments;
 
-    public enum Sex{
-        MALE("MALE"), FEMALE("FEMALE"), OTHERS("OTHERS");
-
-        Sex(String s) {
-        }
-    }
-
-    public Patient() {
+    public PatientDTO() {
     }
 
     public Long getId() {
@@ -74,11 +66,11 @@ public class Patient {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public Sex getSex() {
+    public Patient.Sex getSex() {
         return sex;
     }
 
-    public void setSex(Sex sex) {
+    public void setSex(Patient.Sex sex) {
         this.sex = sex;
     }
 
@@ -106,14 +98,6 @@ public class Patient {
         this.address = address;
     }
 
-    public List<Comment> getComments() {
-        return comments;
-    }
-
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
-    }
-
     public String getIcon() {
         return icon;
     }
@@ -124,17 +108,17 @@ public class Patient {
 
     @Override
     public String toString() {
-        return "Patient{" +
+        return "PatientDTO{" +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", age=" + age +
                 ", dateOfBirth=" + dateOfBirth +
-                ", sex=" + sex +
+                ", sex='" + sex + '\'' +
                 ", country='" + country + '\'' +
                 ", state='" + state + '\'' +
                 ", address='" + address + '\'' +
-                ", comments=" + comments +
+                ", icon='" + icon + '\'' +
                 '}';
     }
 }

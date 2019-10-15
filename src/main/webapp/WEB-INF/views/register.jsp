@@ -5,39 +5,39 @@
     <title>Registration</title>
 </head>
 <body>
-    <h1>New Patient Registration</h1>
+    <h1>Patient Registration</h1>
     <form:form action="/register" method="post" modelAttribute="patient">
         <div>
             <form:input path="firstName" placeholder="First Name"/>
-        </div>
+        </div><br>
         <div>
             <form:input path="lastName" placeholder="Last Name"/>
-        </div>
+        </div><br>
         <div>
             <form:input path="age" placeholder="Age"/>
-        </div>
+        </div><br>
         <div>
             <form:label path="dateOfBirth" placeholder="Date of Birth"/>
             <input type="date" name="dateOfBirth" value="${patient.dateOfBirth}">
-        </div>
+        </div><br>
         <div>
             <form:label path="sex"/>
-            <input type="radio" name="sex" value="${patient.sex = "MALE"}">Male
-            <input type="radio" name="sex" value="${patient.sex = "FEMALE"}">Female
-            <input type="radio" name="sex" value="${patient.sex = "OTHER"}">Other
-        </div>
+            <form:radiobutton path="sex" value="MALE"/>Male
+            <form:radiobutton path="sex" value="FEMALE"/>Female
+            <form:radiobutton path="sex" value="OTHERS"/>Other
+        </div><br>
         <div>
             <form:input path="country" placeholder="Country"/>
-        </div>
+        </div><br>
         <div>
             <form:input path="state" placeholder="State"/>
-        </div>
+        </div><br>
         <div>
             <form:input path="address" placeholder="Address"/>
-        </div>
+        </div><br>
         <div>
             <input type="submit" value="Register">
-        </div>
+        </div><br>
         <div>
             <a href="/index">Back to home page</a>
         </div>
