@@ -1,5 +1,7 @@
 package com.patients.patientsinfo.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.List;
@@ -22,6 +24,7 @@ public class Patient {
     private String icon;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "patient")
+    @JsonManagedReference
     private List<Comment> comments;
 
     public enum Sex{

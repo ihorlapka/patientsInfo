@@ -1,5 +1,7 @@
 package com.patients.patientsinfo.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -12,8 +14,9 @@ public class Comment {
     private LocalDate postedDate;
     private String context;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "patient_id")
+    @JsonBackReference
     private Patient patient;
 
     public Comment() {
