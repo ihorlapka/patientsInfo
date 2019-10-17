@@ -1,7 +1,6 @@
 package com.patients.patientsinfo.controll;
 
 import com.patients.patientsinfo.exceptions.PatientNotFoundException;
-import com.patients.patientsinfo.model.Comment;
 import com.patients.patientsinfo.model.Patient;
 import com.patients.patientsinfo.model.PatientDTO;
 import com.patients.patientsinfo.repository.CommentRepository;
@@ -11,14 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import java.time.LocalDate;
 
 @Controller
-public class MainController {
+public class PatientControl {
+
 
     private PatientService patientService;
     private PatientRepository patientRepository;
-    private CommentRepository commentRepository;
 
     @Autowired
     public void setPatientService(PatientService patientService) {
@@ -30,10 +28,6 @@ public class MainController {
         this.patientRepository = patientRepository;
     }
 
-    @Autowired
-    public void setCommentRepository(CommentRepository commentRepository) {
-        this.commentRepository = commentRepository;
-    }
 
 
     @GetMapping({"/", "/index"})
@@ -78,23 +72,11 @@ public class MainController {
     public String updatePatient(@ModelAttribute(name = "patient") PatientDTO patient){
         System.out.println("Patient id = "+patient.getId());
         if (patient.getSex()== Patient.Sex.MALE){
-            patient.setIcon("images/male.jpg");
+            patient.setIcon("./../../assets/male.jpg");
         }else if (patient.getSex()== Patient.Sex.FEMALE){
-            patient.setIcon("images/female.jpg");
-        }else patient.setIcon("images/others.png");
+            patient.setIcon("./../../assets/female.jpg");
+        }else patient.setIcon("./../../assets/others.png");
         patientService.update(patient);
         return "index";
-    }
-
-    @PostMapping("/addComment/{id}")
-    public String addComment(@PathVariable(name = "id") Patient patient, @RequestParam(name = "comment") String text){
-        System.out.println("Comment Patient id = "+patient.getId());
-        Comment comment = new Comment();
-        comment.setContext(text);
-        comment.setPatient(patientService.findOne(patient.getId()).orElseThrow(PatientNotFoundException::new));
-        LocalDate date = LocalDate.now();
-        comment.setPostedDate(date);
-        commentRepository.save(comment);
-        return "redirect:/changes/"+patient.getId();
     }
 }

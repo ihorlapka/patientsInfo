@@ -4,7 +4,7 @@
 <html>
 <head>
     <title>Update patient</title>
-    <link rel="stylesheet" href="css/indexStyle.css" type="text/css">
+    <link rel="stylesheet" href="css/changesStyle.css" type="text/css">
 </head>
 <body>
 <form:form action="/updatePatient" method="post" modelAttribute="patient">
@@ -60,8 +60,8 @@
     <br>
     <br>
     <br>
-    <div>
-        <table border="1" width="50%" cellpadding="2" class="comments">
+    <div class="comments">
+        <table border="1" width="50%" cellpadding="2">
             <tr>
                 <td><h2>Comments:</h2></td>
             </tr>
@@ -70,6 +70,11 @@
                     <td>
                         <div>${pc.postedDate}</div>
                         <div>${pc.context}</div>
+                        <div class="comment-deleting">
+                            <form action="/deleteComment/${pc.id}" method="post">
+                                <button>-</button>
+                            </form>
+                        </div>
                     </td>
                 </tr>
             </c:forEach>

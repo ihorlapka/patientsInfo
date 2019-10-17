@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface PatientRepository extends JpaRepository<Patient, Long> {
 
-        List<Patient> findAllByLastNameStartingWithOrFirstNameStartingWith(String lastName, String firstName);
+    List<Patient> findAllByLastNameStartingWithOrFirstNameStartingWith(String lastName, String firstName);
 }

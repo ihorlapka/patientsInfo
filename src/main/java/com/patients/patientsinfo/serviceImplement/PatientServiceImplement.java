@@ -4,7 +4,6 @@ import com.patients.patientsinfo.exceptions.PatientNotFoundException;
 import com.patients.patientsinfo.model.Patient;
 import com.patients.patientsinfo.model.PatientDTO;
 import com.patients.patientsinfo.repository.PatientRepository;
-import com.patients.patientsinfo.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class PatientServiceImplement implements PatientService {
+public class PatientServiceImplement implements com.patients.patientsinfo.service.PatientService {
 
     private PatientRepository patientRepository;
 
@@ -65,13 +64,13 @@ public class PatientServiceImplement implements PatientService {
         patient.setAddress(patientDTO.getAddress());
 
         if (patientDTO.getSex()==Patient.Sex.MALE){
-            patientDTO.setIcon("images/male.jpg");
+            patientDTO.setIcon("./../../assets/male.jpg");
         }
         else if (patientDTO.getSex()==Patient.Sex.FEMALE){
-            patientDTO.setIcon("images/female.jpg");
+            patientDTO.setIcon("./../../assets/female.jpg");
         }
         else {
-            patientDTO.setIcon("images/others.png");
+            patientDTO.setIcon("./../../assets/others.png");
         }
         patient.setIcon(patientDTO.getIcon());
         patientRepository.save(patient);
@@ -81,6 +80,4 @@ public class PatientServiceImplement implements PatientService {
     public void deletePatient(Long id) {
         patientRepository.deleteById(id);
     }
-
-
 }

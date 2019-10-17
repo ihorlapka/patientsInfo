@@ -1,0 +1,10 @@
+.comments{
+    position: relative;
+    left: 400px;
+    background-color: darkgrey;
+}
+
+.comment-deleting{
+    position: relative;
+    left: 400px;
+}

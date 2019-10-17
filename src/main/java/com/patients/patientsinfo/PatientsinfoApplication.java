@@ -17,12 +17,4 @@ public class PatientsinfoApplication {
     public static void main(String[] args) {
         SpringApplication.run(PatientsinfoApplication.class, args);
     }
-
-//    CommandLineRunner init(PatientRepository patientRepository){
-//        return args -> {
-//            Stream.of("John", "Julie", "Jennifer", "Helen", "Rachel").forEach(name -> {
-//                Patient patient =
-//            }
-//        }
-//    }
 }
